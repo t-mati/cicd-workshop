@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "express": "^4.22.2",
-    "npm": "^11.21.1",
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
