@@ -7,26 +7,26 @@ do sekundy.
 
 | Krok | Czas |
 |---|---|
-| Set up job | |
-| Checkout | |
-| Set up Node | |
-| Install dependencies | |
-| Install Playwright browsers | |
-| Unit tests | |
-| API tests | |
-| UI tests | |
-| Upload Playwright report | |
-| Post Set up Node | |
-| Post Checkout | |
-| Complete job | |
-| **Cały przebieg** | |
+| Set up job | 0s  |
+| Checkout | 1s |
+| Set up Node | 1s |
+| Install dependencies | 29s |
+| Install Playwright browsers | 16s |
+| Unit tests | 0s |
+| API tests | 20s |
+| UI tests | 2m 21s |
+| Upload Playwright report | 2s |
+| Post Set up Node | 0s |
+| Post Checkout | 0s |
+| Complete job | 0s |
+| **Cały przebieg** | 3m 33s |
 
 ## Czas do pierwszego czerwonego sygnału
 
 | Branch | Czas samego testu | Od startu przebiegu do informacji o błędzie |
 |---|---|---|
-| `demo/failing-unit` | | |
-| `demo/failing-search` | — | |
+| `demo/failing-unit` | 1s | 1m 1s |
+| `demo/failing-search` | 3m 5s | 4m 6s|
 
 Co na `demo/failing-unit` stało się z testami API i UI:
 
@@ -34,8 +34,8 @@ Co na `demo/failing-unit` stało się z testami API i UI:
 
 | Branch | Wynik przebiegu | Dlaczego tak |
 |---|---|---|
-| `demo/failing-lint` | | |
-| `demo/failing-security` | | |
+| `demo/failing-lint` | 3m 28s | |
+| `demo/failing-security` | 4m 7s | |
 
 ## Pięć problemów obecnego pipeline’u
 
