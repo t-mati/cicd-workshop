@@ -27,6 +27,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   changes:
     name: Changed files
@@ -301,3 +304,22 @@ jobs:
       - name: Job summary
         if: always()
         run: node scripts/ci-summary.mjs reports/*.xml
+
+  pipeline-status:
+    name: Pipeline status
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: [changes, quality, unit, security, build, test-api, test-ui, ui-report, test-report]
+    if: always()
+    steps:
+      - name: Check results
+        run: |
+          results='${{ join(needs.*.result, ' ') }}'
+          echo "Job results: $results"
+          for result in $results; do
+            case "$result" in
+              success|skipped) ;;
+              *) echo "::error::A job finished with result: $result"; exit 1 ;;
+            esac
+          done
+          echo "All checks passed."
